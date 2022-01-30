@@ -1,0 +1,13 @@
+#!/bin/bash
+case "$(echo -e "Shutdown\nRestart\nLogout\nSuspend\nLock" | rofi \
+  -width 50 \
+  -lines 4 \
+  -theme Pop-Dark \
+  -dmenu -p \
+"Power:" -l 5)" in
+  Shutdown) exec systemctl poweroff;;
+  Restart) exec systemctl reboot;;
+  Logout) exec pkill -u $USER;;
+  Suspend) exec systemctl suspend;;
+  Lock) exec slock;;
+esac
