@@ -133,12 +133,8 @@ keys.globalkeys = gears.table.join(
     {description = "decrease the number of master clients", group = "layout"}
   ),
   awful.key({ modkey }, "space", function ()
-    awful.screen.focused() awful.util.spawn("rofi -show drun -theme Pop-Dark -show-icons") end,
+    awful.screen.focused() awful.util.spawn("rofi -show") end,
     {description = "run rofi", group = "launcher"}
-  ),
-  awful.key({ modkey }, "d", function ()
-    awful.screen.focused() awful.util.spawn("rofi -show run -theme Pop-Dark") end,
-    {description = "run rofi dmenu", group = "launcher"}
   ),
   awful.key({ modkey, "Shift" }, "Print", function()
     awful.util.spawn("flameshot gui") end,
