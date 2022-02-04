@@ -62,6 +62,24 @@ keys.clientbuttons = gears.table.join(
 )
 
 keys.globalkeys = gears.table.join(
+  awful.key({}, "XF86AudioRaiseVolume", function()
+    awful.util.spawn("pactl set-sink-volume 0 +5%", false) end
+  ),
+  awful.key({}, "XF86AudioLowerVolume", function()
+    awful.util.spawn("pactl set-sink-volume 0 -5%", false) end
+  ),
+  awful.key({}, "XF86AudioMute", function()
+    awful.util.spawn("pactl set-sink-mute 0 toggle", false) end
+  ),
+  awful.key({ }, "XF86AudioPlay", function ()
+    awful.util.spawn_with_shell("playerctl --all-players play-pause") end
+  ),
+  awful.key({ }, "XF86AudioNext", function ()
+    awful.util.spawn_with_shell("playerctl --all-players next") end
+  ),
+  awful.key({ }, "XF86AudioPrev", function ()
+    awful.util.spawn_with_shell("playerctl --all-players previous") end
+  ),
   awful.key({ modkey, }, "s", hotkeys_popup.show_help,
     {description="show help", group="awesome"}
   ),
@@ -144,7 +162,7 @@ keys.globalkeys = gears.table.join(
     awful.screen.focused()
     awful.util.spawn("mpv --profile=low-latency /dev/video0")
     end,
-    {description = "run rofi dmenu", group = "launcher"}
+    {description = "Run cam view", group = "utils"}
   )
 )
 
