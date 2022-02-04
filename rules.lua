@@ -9,7 +9,7 @@ local rules = {
   -- All clients will match this rule.
   {
     rule = { },
-    properties = { 
+    properties = {
       border_width = beautiful.border_width,
       border_color = beautiful.border_normal,
       focus = awful.client.focus.filter,
@@ -17,7 +17,8 @@ local rules = {
       keys = keys.clientkeys,
       buttons = keys.clientbuttons,
       screen = awful.screen.preferred,
-      placement = awful.placement.no_overlap+awful.placement.no_offscreen
+      placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+      size_hints_honor = false
     }
   },
   -- Floating clients.
