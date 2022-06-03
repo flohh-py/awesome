@@ -9,5 +9,5 @@ case "$(echo -e "Shutdown\nRestart\nLogout\nSuspend\nLock" | rofi \
   Restart) exec systemctl reboot;;
   Logout) exec pkill -u $USER;;
   Suspend) exec systemctl suspend;;
-  Lock) exec slock;;
+  Lock) exec i3lock -c 000000;;
 esac

@@ -47,7 +47,7 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "/theme/theme.lua")
 
 local modkey = "Mod4"
 
@@ -61,6 +61,9 @@ root.keys(keys.globalkeys)
 -- }}}
 
 -- {{{ Notification
+naughty.config.defaults['icon_size'] = 100
+naughty.config.defaults['height'] = 100
+naughty.config.defaults['width'] = 300
 
 -- }}}
 
@@ -234,7 +237,7 @@ client.connect_signal("manage", function(c)
 end)
 -- }}}
 
--- {{{ Remove titlebar on floating
+-- {{{ Show titlebar on floating
 client.connect_signal("property::floating", function(c)
   if c.floating then
     awful.titlebar.show(c)
@@ -301,20 +304,22 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ AutorRun
-awful.spawn.with_shell("feh --bg-fill --randomize ~/Pictures/wallpapers/*")
--- awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- slock")
--- awful.spawn.with_shell("xautolock -time 20 -locker slock")
-awful.spawn.with_shell("xfce4-power-manager")
-awful.spawn.with_shell("pgrep xfce4-clipman || xfce4-clipman")
-awful.spawn.with_shell("mate-polkit")
+awful.spawn.with_shell("xautolock -time 20 -locker i3lock -c 000000 --nofork")
+awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork")
+awful.spawn.with_shell("feh --bg-fill ~/.config/awesome/theme/brackground.jpg")
+awful.spawn.with_shell("pgrep xfce4-power-manager || xfce4-power-manager")
+awful.spawn.with_shell("pgrep clipit || clipit")
 awful.spawn.with_shell("pgrep volumeicon || volumeicon")
-awful.spawn.with_shell("pamac-tray")
-awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("pgrep pamac-tray || pamac-tray")
+awful.spawn.with_shell("pgrep nm-applet || nm-applet")
+awful.spawn.with_shell("pgrep picom || picom")
+
+-- mate polkint
+-- awful.spawn.with_shell("mate-polkit")
+awful.spawn.with_shell("/usr/lib/mate-polkit/polkit-mate-authentication-agent-1")
 -- }}}
 
 beautiful.useless_gap = 2
-naughty.config.defaults['icon_size'] = 100
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
