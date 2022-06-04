@@ -37,26 +37,6 @@ tag.connect_signal("request::default_layouts", function()
 end)
 -- }}}
 
--- {{{ Wallpaper
--- screen.connect_signal("request::wallpaper", function(s)
---   awful.wallpaper {
---     screen = s,
---     widget = {
---       {
---         image     = beautiful.wallpaper,
---         upscale   = true,
---         downscale = true,
---         widget    = wibox.widget.imagebox,
---       },
---       valign = "center",
---       halign = "center",
---       tiled  = false,
---       widget = wibox.container.tile,
---     }
---   }
--- end)
--- }}}
-
 -- {{{ Set keys
 root.keys(keys.globalkeys)
 
@@ -290,7 +270,6 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
--- awful.button({ }, 3, function () mymainmenu:toggle() end),
   awful.button({}, 4, awful.tag.viewnext),
   awful.button({}, 5, awful.tag.viewprev)
 ))
