@@ -53,8 +53,8 @@ end)
 
 -- {{{ Notification
 naughty.config.defaults['icon_size'] = 100
-naughty.config.defaults['height'] = 100
-naughty.config.defaults['width'] = 300
+-- naughty.config.defaults['height'] = 100
+-- naughty.config.defaults['width'] = 300
 ruled.notification.connect_signal('request::rules', function()
   -- All notifications will match this rule.
   ruled.notification.append_rule {
