@@ -48,50 +48,19 @@ end)
 client.connect_signal("request::default_mousebindings", function()
   awful.mouse.append_client_mousebindings(keys.clientbuttons)
 end)
-
 -- }}}
 
 -- {{{ Notification
 naughty.config.defaults['icon_size'] = 100
 -- naughty.config.defaults['height'] = 100
 -- naughty.config.defaults['width'] = 300
-ruled.notification.connect_signal('request::rules', function()
-  -- All notifications will match this rule.
-  ruled.notification.append_rule {
-    rule       = {},
-    properties = {
-      screen           = awful.screen.preferred,
-      implicit_timeout = 5,
-    }
-  }
-end)
 
 naughty.connect_signal("request::display", function(n)
   naughty.layout.box { notification = n }
 end)
-
--- }}}
-
--- {{{ Set rules
--- awful.rules.rules = rules
--- awful.rules.rules = rules
--- }}}
-
--- {{{ Signals
-
--- }}}
-
--- {{{ Widgets
-
-
--- }}}
-
--- {{{ Create a wibox for each screen and add it
 -- }}}
 
 -- {{{ Task list
--- }}}
-
 screen.connect_signal("request::desktop_decoration", function(s)
   -- Each screen has its own tag table.
   awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -196,6 +165,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
   }
 end)
+-- }}}
 
 -- {{{ Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
