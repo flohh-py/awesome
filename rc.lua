@@ -246,7 +246,7 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ AutorRun
-awful.spawn.with_shell("xautolock -time 20 -locker i3lock -c 000000")
+awful.spawn.with_shell("xautolock -time 10 -locker i3lock -c 000000")
 awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork")
 awful.spawn.with_shell("feh --bg-fill ~/.config/awesome/theme/brackground.jpg")
 awful.spawn.with_shell("pgrep xfce4-power-manager || xfce4-power-manager")
