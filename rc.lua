@@ -13,20 +13,19 @@ require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
 -- {{{ Error handling
-naughty.connect_signal("request::display_error", function(message, startup)
-    naughty.notification {
-        urgency = "critical",
-        title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
-        message = message
-    }
-end)
+-- naughty.connect_signal("request::display_error", function(message, startup)
+--     naughty.notification {
+--         urgency = "critical",
+--         title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+--         message = message
+--     }
+-- end)
 -- }}}
 
 -- {{{ Variable definitions
 beautiful.init(gears.filesystem.get_configuration_dir() .. "/theme/theme.lua")
 
 local modkey = "Mod4"
-
 
 -- {{{ Tag layout
 tag.connect_signal("request::default_layouts", function()
@@ -56,11 +55,11 @@ naughty.config.defaults['icon_size'] = 100
 naughty.config.defaults['height'] = 100
 naughty.config.defaults['width'] = 300
 -- naughty.config.defaults['shape'] = gears.shape.rounded_rect
-naughty.config.defaults['border_width'] = 5
+naughty.config.defaults['border_width'] = 0
 naughty.config.defaults['bg'] = nil
-naughty.config.defaults['position'] = 'top_middle'
+-- naughty.config.defaults['position'] = 'top_middle'
+naughty.config.defaults['position'] = 'top_right'
 naughty.config.defaults['opacity'] = 100
-
 
 naughty.connect_signal("request::display", function(n)
     naughty.layout.box { notification = n }
