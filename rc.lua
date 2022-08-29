@@ -181,9 +181,9 @@ client.connect_signal("manage", function(c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
-    c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 10)
-    end
+    -- c.shape = function(cr, w, h)
+    --     gears.shape.rounded_rect(cr, w, h, 10)
+    -- end
 end)
 -- }}}
 
@@ -260,7 +260,7 @@ awful.spawn.with_shell("pgrep clipit || clipit")
 awful.spawn.with_shell("pgrep volumeicon || volumeicon")
 awful.spawn.with_shell("pgrep pamac-tray || pamac-tray")
 awful.spawn.with_shell("pgrep nm-applet || nm-applet")
-awful.spawn.with_shell("pgrep picom || picom")
+-- awful.spawn.with_shell("pgrep picom || picom")
 
 -- mate polkint
 -- awful.spawn.with_shell("mate-polkit")
