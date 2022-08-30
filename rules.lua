@@ -43,6 +43,7 @@ ruled.client.connect_signal("request::rules", function()
 
     -- Polybar settings
     ruled.client.append_rule {
+        id         = "polybar",
         rule       = { class = "Polybar" },
         properties = {
             titlebars_enabled = false,
@@ -50,13 +51,26 @@ ruled.client.connect_signal("request::rules", function()
             size_hints_honor = true
         }
     }
-    -- Libreoffice settings
     ruled.client.append_rule {
-        rule       = { class = "Libreoffice" },
+        id         = "float_false",
+        rule_any   = {
+            class = {
+                "Libreoffice", "pgadmin4"
+            }
+        },
         properties = {
             floating = false,
         }
     }
+
+    -- ruled.client.append_rule {
+    --     id         = "pgadmin",
+    --     rule       = { class = "pgadmin4" },
+    --     properties = {
+    --         floating = false,
+    --     }
+    -- }
+
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- ruled.client.append_rule {
     --     rule       = { class = "Firefox"     },
