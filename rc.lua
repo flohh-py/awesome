@@ -13,13 +13,13 @@ require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
 -- {{{ Error handling
--- naughty.connect_signal("request::display_error", function(message, startup)
---     naughty.notification {
---         urgency = "critical",
---         title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
---         message = message
---     }
--- end)
+naughty.connect_signal("request::display_error", function(message, startup)
+    naughty.notification {
+        urgency = "critical",
+        title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+        message = message
+    }
+end)
 -- }}}
 
 -- {{{ Variable definitions
