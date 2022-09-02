@@ -10,3 +10,4 @@
 # picom
 # nm-applet
 # mate-polkit
+# pm-utils
