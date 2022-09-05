@@ -46,7 +46,8 @@ ruled.client.connect_signal("request::rules", function()
         rule       = { class = "Xfce4-panel" },
         properties = {
             titlebars_enabled = false,
-            size_hints_honor = true
+            size_hints_honor = true,
+            on_top = true,
         }
     }
     ruled.client.append_rule {
@@ -55,7 +56,9 @@ ruled.client.connect_signal("request::rules", function()
         properties = {
             titlebars_enabled = false,
             fullscreen = true,
-            size_hints_honor = true
+            on_top = false,
+            screen = 1,
+            tag = "9",
         }
     }
 
