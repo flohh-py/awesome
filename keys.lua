@@ -27,6 +27,12 @@ keys.clientkeys = gears.table.join(
         { description = "move to master", group = "client" }
     ),
     awful.key({ modkey, }, "t", function(c)
+        -- c.ontop = not c.ontop
+        awful.titlebar.toggle(c)
+    end,
+        { description = "toggle titlebar", group = "client" }
+    ),
+    awful.key({ modkey, "Shift" }, "t", function(c)
         c.ontop = not c.ontop
     end,
         { description = "toggle keep on top", group = "client" }

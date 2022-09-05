@@ -3,7 +3,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local naughty = require("naughty")
+-- local naughty = require("naughty")
 local ruled = require("ruled")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
@@ -13,13 +13,13 @@ require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
 -- {{{ Error handling
-naughty.connect_signal("request::display_error", function(message, startup)
-    naughty.notification {
-        urgency = "critical",
-        title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
-        message = message
-    }
-end)
+-- naughty.connect_signal("request::display_error", function(message, startup)
+--   naughty.notification {
+--     urgency = "critical",
+--     title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+--     message = message
+--   }
+-- end)
 -- }}}
 
 -- {{{ Variable definitions
@@ -47,22 +47,6 @@ end)
 
 client.connect_signal("request::default_mousebindings", function()
     awful.mouse.append_client_mousebindings(keys.clientbuttons)
-end)
--- }}}
-
--- {{{ Notification
-naughty.config.defaults['icon_size'] = 100
-naughty.config.defaults['height'] = 100
-naughty.config.defaults['width'] = 300
--- naughty.config.defaults['shape'] = gears.shape.rounded_rect
-naughty.config.defaults['border_width'] = 0
-naughty.config.defaults['bg'] = nil
--- naughty.config.defaults['position'] = 'top_middle'
-naughty.config.defaults['position'] = 'top_right'
-naughty.config.defaults['opacity'] = 100
-
-naughty.connect_signal("request::display", function(n)
-    naughty.layout.box { notification = n }
 end)
 -- }}}
 
@@ -149,27 +133,27 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar {
-        position = "bottom",
-        screen   = s,
-        height   = beautiful.menu_height,
-        widget   = {
-            layout = wibox.layout.align.horizontal,
-            { -- Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                mylauncher,
-                s.mytaglist,
-                s.mypromptbox,
-            },
-            s.mytasklist, -- Middle widget
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
-                wibox.widget.textclock(),
-                s.mylayoutbox,
-            },
-        }
-    }
+    -- s.mywibox = awful.wibar {
+    --     position = "bottom",
+    --     screen   = s,
+    --     height   = beautiful.menu_height,
+    --     widget   = {
+    --         layout = wibox.layout.align.horizontal,
+    --         { -- Left widgets
+    --             layout = wibox.layout.fixed.horizontal,
+    --             mylauncher,
+    --             s.mytaglist,
+    --             s.mypromptbox,
+    --         },
+    --         s.mytasklist, -- Middle widget
+    --         { -- Right widgets
+    --             layout = wibox.layout.fixed.horizontal,
+    --             wibox.widget.systray(),
+    --             wibox.widget.textclock(),
+    --             s.mylayoutbox,
+    --         },
+    --     }
+    -- }
 end)
 -- }}}
 
@@ -181,22 +165,22 @@ client.connect_signal("manage", function(c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
-    -- c.shape = function(cr, w, h)
-    --     gears.shape.rounded_rect(cr, w, h, 10)
-    -- end
+    c.shape = function(cr, w, h)
+        gears.shape.rounded_rect(cr, w, h, 10)
+    end
 end)
 -- }}}
 
 -- {{{ Show titlebar on floating
-client.connect_signal("property::floating", function(c)
-    if c.floating then
-        awful.titlebar.show(c)
-        awful.placement.centered()
-        awful.placement.no_offscreen()
-    else
-        awful.titlebar.hide(c)
-    end
-end)
+-- client.connect_signal("property::floating", function(c)
+--     if c.floating then
+--         awful.titlebar.show(c)
+--         awful.placement.centered()
+--         awful.placement.no_offscreen()
+--     else
+--         awful.titlebar.hide(c)
+--     end
+-- end)
 -- }}}
 
 -- {{{ Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -252,20 +236,9 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ AutorRun
-awful.spawn.with_shell("xautolock -time 10 -locker i3lock -c 000000")
-awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork")
-awful.spawn.with_shell("feh --bg-fill ~/.config/awesome/theme/brackground.jpg")
-awful.spawn.with_shell("pgrep xfce4-power-manager || xfce4-power-manager")
-awful.spawn.with_shell("pgrep clipit || clipit")
-awful.spawn.with_shell("pgrep volumeicon || volumeicon")
-awful.spawn.with_shell("pgrep pamac-tray || pamac-tray")
-awful.spawn.with_shell("pgrep nm-applet || nm-applet")
--- awful.spawn.with_shell("pgrep picom || picom")
-
--- mate polkint
--- awful.spawn.with_shell("mate-polkit")
-awful.spawn.with_shell("/usr/lib/mate-polkit/polkit-mate-authentication-agent-1")
--- }}}
-
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+awful.spawn.with_shell("pgrep xfce4-panel || xfce4-panel")
+awful.spawn.with_shell("pgrep xfce4-session || xfce4-session")

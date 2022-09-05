@@ -41,6 +41,24 @@ ruled.client.connect_signal("request::rules", function()
         properties = { titlebars_enabled = false }
     }
 
+    ruled.client.append_rule {
+        id         = "xfcepannel",
+        rule       = { class = "Xfce4-panel" },
+        properties = {
+            titlebars_enabled = false,
+            size_hints_honor = true
+        }
+    }
+    ruled.client.append_rule {
+        id         = "xdesktop",
+        rule       = { class = "Xfdesktop" },
+        properties = {
+            titlebars_enabled = false,
+            fullscreen = true,
+            size_hints_honor = true
+        }
+    }
+
     -- Polybar settings
     ruled.client.append_rule {
         id         = "polybar",
