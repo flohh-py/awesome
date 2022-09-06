@@ -235,10 +235,16 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
--- {{{ AutorRun
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
 
+-- {{{ AutorRun
 awful.spawn.with_shell("pgrep xfce4-panel || xfce4-panel")
 awful.spawn.with_shell("pgrep xfce4-session || xfce4-session")
+awful.spawn.with_shell("feh --bg-fill ~/.config/awesome/theme/brackground.jpg")
+-- }}}
+
+-- {{{ Enable awesome on xfce4
+-- lvim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+-- replace xfwm4 with awesome
+-- }}}

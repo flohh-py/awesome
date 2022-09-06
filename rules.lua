@@ -55,8 +55,9 @@ ruled.client.connect_signal("request::rules", function()
         rule       = { class = "Xfdesktop" },
         properties = {
             titlebars_enabled = false,
-            fullscreen = true,
             on_top = false,
+            floating = true,
+            size_hints_honor = false,
             screen = 1,
             tag = "9",
         }
