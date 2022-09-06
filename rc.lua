@@ -188,15 +188,15 @@ end)
 -- }}}
 
 -- {{{ Show titlebar on floating
-client.connect_signal("property::floating", function(c)
-    if c.floating then
-        awful.titlebar.show(c)
-        awful.placement.centered()
-        awful.placement.no_offscreen()
-    else
-        awful.titlebar.hide(c)
-    end
-end)
+-- client.connect_signal("property::floating", function(c)
+--     if c.floating then
+--         awful.titlebar.show(c)
+--         awful.placement.centered()
+--         awful.placement.no_offscreen()
+--     else
+--         awful.titlebar.hide(c)
+--     end
+-- end)
 -- }}}
 
 -- {{{ Add a titlebar if titlebars_enabled is set to true in the rules.
