@@ -46,10 +46,10 @@ theme.border_marked = "#91231c"
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-  taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_normal
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-  taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_normal
 )
 
 -- Variables set for theming notifications:
@@ -62,7 +62,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height       = dpi(25)
+theme.menu_height       = dpi(20)
 theme.menu_width        = dpi(100)
 
 -- You can add as many variables as
@@ -119,7 +119,7 @@ theme.layout_cornerse   = themes_path .. "default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
-  theme.menu_height, theme.bg_focus, theme.fg_focus
+    theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
 -- Define the icon theme for application icons. If not set then the icons
