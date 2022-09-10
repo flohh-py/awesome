@@ -14,11 +14,11 @@ require("awful.autofocus")
 
 -- {{{ Error handling
 -- naughty.connect_signal("request::display_error", function(message, startup)
---   naughty.notification {
---     urgency = "critical",
---     title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
---     message = message
---   }
+--     naughty.notification {
+--         urgency = "critical",
+--         title   = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+--         message = message
+--     }
 -- end)
 -- }}}
 
@@ -134,7 +134,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar {
-        position = "top",
+        position = "bottom",
         screen   = s,
         height   = beautiful.menu_height,
         widget   = {
@@ -145,13 +145,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 s.mytaglist,
                 -- s.mypromptbox,
             },
-            -- s.mytasklist, -- Middle widget
-            -- { -- Right widgets
-            --     layout = wibox.layout.fixed.horizontal,
-            --     wibox.widget.systray(),
-            --     wibox.widget.textclock(),
-            --     s.mylayoutbox,
-            -- },
+            s.mytasklist, -- Middle widget
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                wibox.widget.systray(),
+                wibox.widget.textclock(),
+                s.mylayoutbox,
+            },
         }
     }
 end)
@@ -244,7 +244,9 @@ awful.spawn.with_shell("pgrep xfce4-session || xfce4-session")
 awful.spawn.with_shell("feh --bg-fill ~/.config/awesome/theme/brackground.jpg")
 -- }}}
 
--- {{{ Enable awesome on xfce4
--- lvim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+-- {{{  Config files for xfce4
+-- vim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+-- vim /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 -- replace xfwm4 with awesome
+-- disable xfce4-panel
 -- }}}

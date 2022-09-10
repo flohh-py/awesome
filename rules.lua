@@ -63,14 +63,13 @@ ruled.client.connect_signal("request::rules", function()
         }
     }
     ruled.client.append_rule {
-        id         = "guaketerminal",
-        rule       = { class = "Guake" },
+        id         = "scratchpads",
+        rule_any   = { class = { "Guake", "Xfce4-notes" } },
         properties = {
             titlebars_enabled = false,
             on_top = true,
             floating = true,
             size_hints_honor = true,
-
         }
     }
 
