@@ -21,7 +21,8 @@ ruled.client.connect_signal("request::rules", function()
             instance = { "copyq", "pinentry" },
             class    = {
                 "Arandr", "Blueman-manager", "Gpick", "Kruler", "Sxiv",
-                "Tor Browser", "Wpa_gui", "veromix", "xtightvncviewer"
+                "Tor Browser", "Wpa_gui", "veromix", "xtightvncviewer",
+                "Guake", "Xfce4-notes", "Steam"
             },
             name     = {
                 "Event Tester",
@@ -48,28 +49,6 @@ ruled.client.connect_signal("request::rules", function()
             titlebars_enabled = false,
             size_hints_honor = true,
             on_top = true,
-        }
-    }
-    ruled.client.append_rule {
-        id         = "xdesktop",
-        rule       = { class = "Xfdesktop" },
-        properties = {
-            titlebars_enabled = false,
-            on_top = false,
-            floating = true,
-            size_hints_honor = false,
-            screen = 1,
-            tag = "9",
-        }
-    }
-    ruled.client.append_rule {
-        id         = "scratchpads",
-        rule_any   = { class = { "Guake", "Xfce4-notes" } },
-        properties = {
-            titlebars_enabled = false,
-            on_top = true,
-            floating = true,
-            size_hints_honor = true,
         }
     }
 
